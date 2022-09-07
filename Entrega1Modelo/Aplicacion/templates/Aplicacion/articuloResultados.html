@@ -1,0 +1,31 @@
+{% extends "Aplicacion/contact.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1>RELOADING...</h1>
+{% endblock %}
+
+{% block form %}
+
+<h3>Busqueda de Articulo:</h3>
+{% if usuarios %}
+<ul>
+    {% for articulo in usuarios %}
+        <li>
+            {{ articulo.usuario }}
+        </li>
+        <li>
+            {{ articulo.articuloTitulo }}
+        </li>
+        -----------------------
+            <br>
+    {% endfor %}
+</ul>
+
+{% else %}
+<p> no se encontraron usuarios</p>
+
+{% endif %}
+
+{% endblock %}
