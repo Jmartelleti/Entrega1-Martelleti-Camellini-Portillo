@@ -13,3 +13,6 @@ En la tercera pestaña "SAMPLE POST" se encuentra un articulo, al pie de pagina 
 (Dato de color: "en el pie de pagina se encuentra un logo de GitHub, acá adentro nuestro repositorio :) " )
 
 En la cuarta página "Contact" hay un formulario donde pones tus datos de contacto, de la misma manera se agrega una pestaña donde introducis tu mail para buscar en la base de datos si tu mail se encuentra registrado.
+
+
+El login de /admin es=  User: admin    Password: admin
