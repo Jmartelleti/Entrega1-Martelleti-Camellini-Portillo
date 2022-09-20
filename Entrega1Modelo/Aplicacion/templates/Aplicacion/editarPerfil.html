@@ -1,0 +1,19 @@
+{% extends "Aplicacion/contact.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1>EDITAR PERFIL DE {{ usuario }}</h1>
+{% endblock %}
+
+{% block form %}
+<h2>Formulario de Edicion </h2>
+<br>
+<form action={% url 'editarUsuario' %} method ="POST">{% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" name="submit" value="guardar">
+</form>
+{{ mensaje }}
+    {% endblock %}
