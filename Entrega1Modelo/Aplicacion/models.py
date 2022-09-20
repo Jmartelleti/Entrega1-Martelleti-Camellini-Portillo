@@ -28,7 +28,9 @@ class Articulo(models.Model):
     def __str__(self):
         return f"{self.usuario} recomienda subir articulo de: {self.articuloTitulo}"
 
-
+class Avatar(models.Model):
+    user=models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    img= models.ImageField(upload_to="avatares")
 
 
 

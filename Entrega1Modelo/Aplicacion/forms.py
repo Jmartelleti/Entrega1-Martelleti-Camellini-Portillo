@@ -1,9 +1,16 @@
+from dataclasses import field
 from django import forms
+from .models import Usuario
 
 class usuarioForm(forms.Form):
     usuario=forms.CharField(max_length=50)
     email=forms.EmailField(max_length=2000000)
-    password=forms.CharField(widget=forms.PasswordInput)
+    password1=forms.CharField(label="Ingrese la contraseña:", widget=forms.PasswordInput)
+    password2=forms.CharField(label="Repita la contraseña", widget=forms.PasswordInput)
+
+    class Meta: 
+        model = Usuario
+        fields = ["usuario", "password1", "email", "password2"]
 
 
 class contactForm(forms.Form):
@@ -16,3 +23,6 @@ class articleForm(forms.Form):
     usuario=forms.CharField(max_length=45)
     articuloTitulo=forms.CharField(max_length=50)
     articuloContenido=forms.CharField(max_length=200)
+
+class AvatarForm(forms.Form):
+    imagen=forms.ImageField

@@ -1,10 +1,12 @@
 import email
 from uuid import RESERVED_FUTURE
-from Aplicacion.forms import contactForm, usuarioForm, articleForm
+from Aplicacion.forms import contactForm, usuarioForm, articleForm, AvatarForm
 from django.shortcuts import render
-from .models import Usuario, Contacto, Articulo
+from .models import Usuario, Contacto, Articulo, Avatar
 from django.http import HttpResponse
-# Create your views here.
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 def inicio(request):
     if request.method=="POST":
@@ -63,7 +65,7 @@ def contact(request):
             return render (request,"Aplicacion/contact.html", {"mensaje":"Mensaje Enviado"} )
     else:
         formulario=contactForm()
-        return render(request,"Aplicacion/contact.html", {"formulario":formulario})
+        return render(request,"Aplicacion/contact.html", {"formulario":formulario, "avatar":AgregarAvatar(request.user)})
 
 def buscarContact(request):
     if request.GET["email"]:
@@ -71,7 +73,7 @@ def buscarContact(request):
         usuario=Contacto.objects.filter(email=email)
         return render(request, "Aplicacion/contactResultados.html", {"usuario":usuario})
     else:
-        return render(request, "Apicacion/contactBusqueda.html", {"mensaje":"ingrese una opcion"})   
+        return render(request, "Apicacion/contactBusqueda.html", {"mensaje":"ingrese una opcion", "avatar":AgregarAvatar(request.user)})   
 
 def contactBusqueda(request):
     return render(request, "Aplicacion/contactBusqueda.html")   
@@ -88,3 +90,20 @@ def post3(request):
 def post4(request):
     return render(request, "Aplicacion/post4.html")
 
+@login_required
+def editarUsuario(request):
+    usuario=request.usuario
+
+def login(request):
+    return render(request, "Aplicacion/login.html")
+
+def AgregarAvatar(request):
+    if request.method=="POST":
+        formulario=AvatarForm(request.POST, request.FILES)
+        if formulario.is_valid():
+            avatarviejo=Avatar.objects.filter(user=request.user)
+            if len(avatarviejo)>0:
+                avatarviejo[0].delete()
+                avatar=Avatar(user=request.user, imagen=formulario.cleaned_data["imagen"])
+                avatar.save()
+                return render (request, inicio, {"usuario":request.user,"mensaje":avatar,"imagen":avatar.imagen.url})

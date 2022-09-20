@@ -18,6 +18,9 @@ urlpatterns = [
     path("contactResultados.html/",buscarContact, name="contactResultado"),
     path("articuloBusqueda.html/", articuloBusqueda, name="articleBusqueda"),
     path("articuloResultados.html/", articuloResultados, name="articleResultado"),
+    path("login/", login, name="login"),
+    
+     
 
 
 
