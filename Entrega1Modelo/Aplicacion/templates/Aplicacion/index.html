@@ -31,7 +31,14 @@
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'about' %}">About</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'post' %}">Sample Post</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'contact' %}">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'usuarioBusqueda' %}">{{ mensaje }}</a></li>
+                        {% if not request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'login' %}">LOGIN</a></li>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                        
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'usuarioBusqueda' %}">Bienvenido {{ user.username }}</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'logout' %}">Logout</a></li>
+                        {% endif %}
 
                     </ul>
                 </div>
@@ -47,6 +54,8 @@
                             <h1> Astronomía  </h1>
                             <span class="subheading">A Blog Theme by Camellini, Martelli and Portillo </span>
                             {% endblock%}
+                            <br>
+                            <br>
                             <b style="background-color:rgb(96, 65, 236)">{{ mensaje }} </b>
                             
                         </div>

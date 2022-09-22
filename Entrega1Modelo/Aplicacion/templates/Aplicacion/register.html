@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link href="{% static 'Aplicacion/css/login.css' %}" rel="stylesheet"/>
 </head>
 <body>
     <div class="login">
-        <h1>Login</h1>
-        <p>{{mensaje}}</p> 
-        <form action=""  method="POST">
+        <h1>Register</h1>
+        <p>{{mensaje}}
+        <form action="" method="POST">
             {% csrf_token %}
-            {{ formulario.as_p }}
-            <button type="submit" class="btn btn-primary btn-block btn-large">Iniciar sesión.</button>
-            <a class="tnb tnb-primary tnb-block tnb-register" width="0.4 px" height="20" href="{% url 'register'%}">Sign in</a>
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-block btn-large">Registrate.</button>
         </form>
     </div>
+    
 </body>
 </html>

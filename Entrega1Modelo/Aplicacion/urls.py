@@ -1,6 +1,8 @@
 from atexit import register
 from django.urls import path
 from .views import *
+from django.contrib.auth.views import LogoutView
+
 
 urlpatterns = [
     
@@ -18,8 +20,11 @@ urlpatterns = [
     path("contactResultados.html/",buscarContact, name="contactResultado"),
     path("articuloBusqueda.html/", articuloBusqueda, name="articleBusqueda"),
     path("articuloResultados.html/", articuloResultados, name="articleResultado"),
-    path("login/", login, name="login"),
-    
+    path("login/", login_request, name="login"),
+    path("register/",register,name="register"),
+    path("logout/", LogoutView.as_view(template_name="Aplicacion/logout.html"), name="logout"),
+    path("editarUsuario/", editarUsuario, name="editarUsuario"),
+
      
 
 

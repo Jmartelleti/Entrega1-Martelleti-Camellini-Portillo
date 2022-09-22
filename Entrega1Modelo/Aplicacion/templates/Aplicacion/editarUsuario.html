@@ -7,9 +7,9 @@
 {% endblock %}
 
 {% block form %}
-<h2>Formulario de Edicion </h2>
+<h2>Formulario - EDITAR PERFIL </h2>
 <br>
-<form action={% url 'editarUsuario' %} method ="POST">{% csrf_token %}
+<form action="{% url 'editarUsuario' %}" method ="POST">{% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>

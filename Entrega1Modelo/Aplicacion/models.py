@@ -3,12 +3,12 @@ from django.db import models
 # Create your models here.
 
 class Usuario(models.Model):
-    usuario=models.TextField(max_length=40)
+    username=models.TextField(max_length=40)
     email=models.EmailField(max_length=100)
     password=models.CharField(max_length=40)
 
     def __str__(self):
-        return f"{self.usuario}, {self.email}."
+        return f"{self.username}, {self.email}."
 
 
 class Contacto(models.Model):
@@ -30,7 +30,9 @@ class Articulo(models.Model):
 
 class Avatar(models.Model):
     user=models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    img= models.ImageField(upload_to="avatares")
-
+    img= models.ImageField(upload_to="avatares",  null=True, blank= True)
+    
+    def __str__(self):
+        return f"{self.user}"
 
 
