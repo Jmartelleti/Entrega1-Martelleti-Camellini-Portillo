@@ -39,4 +39,13 @@ def profile(request):
         'u_form': u_form,
         'p_form': p_form
     }
-    return render(request, 'users/profile.html', context)
+    return render(request, 'users/profile.html', context, {"avatar":p_form})
+
+
+def obtenerAvatar(request):
+    lista=Profile.objects.filter(user=request.user)
+    if len(lista)!=0:
+        img=lista[0].img.url
+    else:
+        img="/media/avatares/avatarpordefecto.png"
+    return img
