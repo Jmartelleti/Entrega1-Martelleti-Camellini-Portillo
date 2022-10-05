@@ -55,8 +55,8 @@ a.article-title:hover {
 }
 */
 .article-img  {
-  height: 50px !important;
-  width: 50px !important;
+  height: 30px !important;
+  width: 30px !important;
   margin-right: 16px !important;
 }
 /*
@@ -177,6 +177,8 @@ body {
   background-size: cover;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(184, 238, 238, 0);
+  min-height: 100vh !important;
+  position:relative;
 
 }
 
@@ -728,31 +730,32 @@ progress {
   padding-left: var(--bs-gutter-x, 0.75rem);
   margin-right: auto;
   margin-left: auto;
+  min-height: 100vh;
 }
 
 @media (min-width: 576px) {
   .container-sm, .container {
-    max-width: 540px;
+    max-width: 100%;
   }
 }
 @media (min-width: 768px) {
   .container-md, .container-sm, .container {
-    max-width: 720px;
+    max-width: 100%;
   }
 }
 @media (min-width: 992px) {
   .container-lg, .container-md, .container-sm, .container {
-    max-width: 960px;
+    max-width: 100%;
   }
 }
 @media (min-width: 1200px) {
   .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1140px;
+    max-width: 100%;
   }
 }
 @media (min-width: 1400px) {
   .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1320px;
+    max-width: 100%;
   }
 }
 .row {
@@ -771,6 +774,7 @@ progress {
   padding-right: calc(var(--bs-gutter-x) * 0.5);
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-top: var(--bs-gutter-y);
+  min-height: 100vh;
 }
 
 .col {
@@ -1277,6 +1281,7 @@ progress {
   .col-md-8 {
     flex: 0 0 auto;
     width: 66.66666667%;
+    padding-top: 16px;
   }
 
   .col-md-9 {
@@ -3975,7 +3980,7 @@ textarea.form-control-lg {
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1rem;
   color: #212529;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
@@ -4061,8 +4066,7 @@ textarea.form-control-lg {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: auto;
 }
 .navbar > .container,
 .navbar > .container-fluid,
@@ -4089,10 +4093,16 @@ textarea.form-control-lg {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  padding:auto;
+  margin: auto;
+  text-align: center;
 }
 .navbar-nav .nav-link {
   padding-right: 0;
   padding-left: 0;
+  padding:auto;
+  margin: auto;
+  text-align: center;
 }
 .navbar-nav .dropdown-menu {
   position: static;
@@ -4213,6 +4223,9 @@ textarea.form-control-lg {
   .navbar-expand-md .navbar-nav .nav-link {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
+    padding:auto;
+    margin: auto;
+    text-align: center;
   }
   .navbar-expand-md .navbar-nav-scroll {
     overflow: visible;
@@ -5431,14 +5444,14 @@ textarea.form-control-lg {
   padding: 1rem;
 }
 
-.modal-footer {
+/* .modal-footer {
   display: flex;
   flex-wrap: wrap;
   flex-shrink: 0;
   align-items: center;
   justify-content: flex-end;
   padding: 0.75rem;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid #dee2e6; */
 }
 .modal-footer > * {
   margin: 0.25rem;
@@ -6656,6 +6669,8 @@ textarea.form-control-lg {
 
 .border-top {
   border-top: 1px solid #dee2e6 !important;
+  position:absolute;
+  bottom:0;
 }
 
 .border-top-0 {
@@ -7719,8 +7734,8 @@ textarea.form-control-lg {
 }
 
 .rounded {
-  border-radius: 0.25rem !important;
-  height: 30px;
+  border-radius: 0.15rem !important;
+  height: 30px !important;
 }
 
 .rounded-0 {
@@ -7741,7 +7756,7 @@ textarea.form-control-lg {
 
 .rounded-circle {
   border-radius: 50% !important;
-  size: 50px;
+  size: 20px !important ;
 }
 
 .rounded-pill {
@@ -11148,7 +11163,7 @@ blockquote {
   text-transform: uppercase;
 }
 #mainNav .navbar-nav > li.nav-item > a.nav-link {
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 800;
   letter-spacing: 0.0625em;
   text-transform: uppercase;
@@ -11208,6 +11223,20 @@ blockquote {
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
+  position:absolute !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  margin-top: auto;
+}
+
+footer .footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  position:absolute !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  margin-top: auto;
+
 }
 
 header.masthead {
