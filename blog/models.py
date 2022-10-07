@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 from django.conf import settings
-
+from ckeditor.fields import RichTextField
 
 class PostManager(models.Manager):
     def like_toggle(self, user, post_obj):
@@ -19,7 +19,9 @@ class Post(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    #ckeditor:
+    content=RichTextField(blank=True, null=True)
+    #content = models.TextField()
     liked = models.ManyToManyField(
         settings.AUTH_USER_MODEL, blank=True, related_name='liked')
     date_posted = models.DateTimeField(default=timezone.now)
