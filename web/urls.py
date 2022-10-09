@@ -28,9 +28,9 @@ urlpatterns = [
         template_name='users/password_change.html'), name='password_change'),
     path('password-change/done/', auth_views.PasswordChangeDoneView.as_view(
         template_name='users/password_change_done.html'), name='password_change_done'),
+    path('direct/', include('direct.urls')),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
     path('', include('blog.urls')),55
