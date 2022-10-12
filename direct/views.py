@@ -67,7 +67,7 @@ def Directs(request, username):
 	directs.update(is_read=True)
 	for message in messages:
 		if message['user'].username == username:
-			message['unread'] = 0
+			message['unread'] = 0 # activar unread o desactivar  aca tendriamos que poner la notificacion
 
 	context = {
 		'directs': directs,

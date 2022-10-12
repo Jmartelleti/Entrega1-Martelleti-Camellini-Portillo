@@ -1,5 +1,13 @@
 {% extends 'blog/base.html' %}
 
+<head>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- https://cdnjs.com/libraries/font-awesome -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/LATEST-VERSION">
+ 
+</head>
+
 {% load static %}
 
 {% block content %}
@@ -36,12 +44,10 @@
         <p>
           <strong>{{ message.user.profile.first_name }} {{ message.user.profile.last_name }}</strong> <small>@{{ message.user.username }}</small>
         </p>
-      </div>
-
+      </div> 
       <div class="content">
         {% if message.unread %}
-        <p style="font-weight: bold; color: red;">
-          <i class="material-icons">mark_chat_unread</i> {{ message.unread }}
+        <p1 > New messages </p1> {{ message.unread }}
         </p>
         {% endif %}        
       </div>
