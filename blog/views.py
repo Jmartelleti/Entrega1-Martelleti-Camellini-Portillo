@@ -14,7 +14,7 @@ from django.views.generic import (
     DeleteView
 )
 
-
+#la vista del buscador search en el home
 class PostListView(ListView):
     model = Post
     template_name = 'blog/index.html'
@@ -33,7 +33,7 @@ class PostListView(ListView):
             object_list = self.model.objects.all()
         return object_list
 
-
+#la view del posteo de un usuario 
 class UserPostListView(ListView):
     model = Post
     template_name = 'blog/user_posts.html'
@@ -44,11 +44,11 @@ class UserPostListView(ListView):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by('-date_posted')
 
-
+#el detalle del posteo en el home una vez clickeado
 class PostDetailView(DetailView):
     model = Post
 
-
+#la vista para crear un post necesariamente con un loginRequired
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
@@ -57,7 +57,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-
+#para poder modificar el post una vez hecho y antes de poder postearlo
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'content']
@@ -72,7 +72,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
         return False
 
-
+#para eliminar un posteo, necesario estar logeado y tener permiso (en este caso ser dueño del post)
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
     success_url = '/'
@@ -83,11 +83,11 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
-
+#renderiza la template del about
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
 
-
+#para añadir comentarios a posteos, necesario estar logeado
 @login_required
 def add_comment(request, pk):
     post = get_object_or_404(Post, pk=pk)

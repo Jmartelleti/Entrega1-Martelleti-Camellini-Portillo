@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.conf import settings
 from ckeditor.fields import RichTextField
 
+#el modelo para sumarle un like a un posteo
 class PostManager(models.Manager):
     def like_toggle(self, user, post_obj):
         if user in post_obj.liked.all():
@@ -14,7 +15,7 @@ class PostManager(models.Manager):
             post_obj.liked.add(user)
         return is_liked
 
-
+#el modelo para establecer el post con sus atributos
 class Post(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -37,7 +38,7 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('post_detail', kwargs={'pk': self.pk})
 
-
+#la clase comentario para poder introducirlo en la template del post detail
 class Comment(models.Model):
     post = models.ForeignKey(
         Post, related_name='comments', on_delete=models.CASCADE)

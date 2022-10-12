@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
-
+#la view para poder registrarse
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -11,13 +11,13 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(
-                request, "Your account has been created! Your ar now able to login.")
+                request, "Tu cuenta ha sido creada! Ya te puedes logear")
             return redirect('login')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
-
+#la view para entrar a tu perfil, una vez logeado
 @login_required
 def profile(request):
     if request.method == 'POST':
@@ -28,7 +28,7 @@ def profile(request):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            messages.success(request, "Your account has been updated!")
+            messages.success(request, "Tu cuenta ha sido actualizada!")
             return redirect('profile')
 
     else:
@@ -42,10 +42,3 @@ def profile(request):
     return render(request, 'users/profile.html', context)
 
 
-def obtenerAvatar(request):
-    lista=Profile.objects.filter(user=request.user)
-    if len(lista)!=0:
-        img=lista[0].img.url
-    else:
-        img="/media/avatares/avatarpordefecto.png"
-    return img
