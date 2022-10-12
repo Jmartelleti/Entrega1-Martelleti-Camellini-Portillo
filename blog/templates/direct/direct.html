@@ -21,8 +21,8 @@
   <article class="media">
     <div class="media-left">
       <figure class="image is-64x64">
-          {% if message.user.profile.picture %}
-            <img src="{{ message.user.profile.picture.url }}" alt="Placeholder image">
+          {% if message.user.profile.image.url %}
+            <img src="{{message.user.profile.image.url }}" alt="Placeholder image">
           {% else %}
             <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
           {% endif %}
