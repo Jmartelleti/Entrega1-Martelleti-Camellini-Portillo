@@ -2,17 +2,13 @@
 
 La página es un blog de Astronomía con articulos relacionados a esta.
 
-Cuenta con un formulario de registro al pie de página en el inicio, una vez registrado se puede encontrar un boton en el nav superior derecho que dice "USUARIO". 
-Clickeando aqui te lleva a un formulario de busqueda donde puedes ver si te encuentras en la base de datos.
-Existen 4 articulos donde podés encontrar diversos temas explicados y relacionados con la Ciencia Astronomica, cada uno de ellos con un url distinto y dentro de la página de "post.html/".
+El home llamado con url vacia, se muestran los posteos y los detalles de que usuario los subió, clickeandolos entras al detalle de los mismos pudiendo dejar un comentario o like si estas logeado, para ello te redirecciona al log in, si no tenes un usuario podes entrar al nav-bar a register donde te pide los datos para entrar.
 
-En la segunda página se encuentra la pestaña "About" que explica quienes somos
+Una vez logeado te permite agregar una imagen a tu perfil que se mostrara en el nav-bar, modificar datos de usuario en el /profile/
+Te dejará postear junto con un editor de texto avanzado, pudiendo modificar datos del mismo una vez publicado.
 
-En la tercera pestaña "SAMPLE POST" se encuentra un articulo, al pie de pagina se encuentra un formulario para enviar ideas para proximos articulos, dentro de esta pestaña no hace falta subir un articulo para encontrar en el nav superior derecho "ARTICLE FIND" donde ubicas un nombre de usuario para verificar si este sugerió ideas
+Existe una pestaña de Messages donde podras buscar otro usuario y agregarle un mensaje, si te enviaron te aparecerá una notificacion con los detalles de la misma en la pestaña de mensajes, pudiendo ver el avatar del mismo y respondiendole de forma que lo ve una vez refrescada la página.
 
-(Dato de color: "en el pie de pagina se encuentra un logo de GitHub, acá adentro nuestro repositorio :) " )
+Existe la pestaña de about us, la misma contiene un pequeño contenido acerca de nuestros objetivos, a la vez de enlaces en nuestros nombres al linkedin de nuestros perfiles, tambien en el footer se encuentra el github del proyecto y de cada integrante que participó.
 
-En la cuarta página "Contact" hay un formulario donde pones tus datos de contacto, de la misma manera se agrega una pestaña donde introducis tu mail para buscar en la base de datos si tu mail se encuentra registrado.
-
-
-El login de /admin es=  User: admin    Password: admin
+Posee un buscador de posteos, el mismo se encuentra en el home y lo hace de forma icontains para buscar posteos que contengan al menos los carecteres que se introducen en el mismo form de search.
